@@ -1,8 +1,9 @@
 def connection():
     import gspread
+    import streamlit as st
     from google.oauth2.service_account import Credentials
 
-    credential = "credentials.json"
+    credential = st.secrets["service_account"]
 
     scopes = [
     'https://www.googleapis.com/auth/spreadsheets', # Access Sheets data
@@ -13,4 +14,5 @@ def connection():
         credential, scopes=scopes)
     
     client = gspread.authorize(creds)
+
     return client
