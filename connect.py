@@ -10,9 +10,10 @@ def connection():
     'https://www.googleapis.com/auth/drive']
 
 # Create credentials object from the JSON file
-    creds = Credentials.from_service_account_file(
+    creds = Credentials.from_service_account_info(
         credential, scopes=scopes)
     
     client = gspread.authorize(creds)
 
     return client
+
