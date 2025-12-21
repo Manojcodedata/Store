@@ -18,7 +18,6 @@ def indents_page():
 
     if submit:
         sheet = get_worksheet("Store Sheet", "Indents")
-        st.write("Sheet accessed")
 
         sheet.append_row([
             str(date),
@@ -27,6 +26,5 @@ def indents_page():
             department,
             quantity
         ])
-        st.write("Data",str(date),indent_no,item,department,quantity)
 
         st.success(f"✅Item of Qty in saved in Store sheet → Indent")
