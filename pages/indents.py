@@ -27,4 +27,4 @@ def indents_page():
             quantity
         ])
 
-        st.success(f"✅Item {item} of Qty {quantity} in saved in Store sheet → Indent")
+        st.success(f"✅Item of Qty in saved in Store sheet → Indent")
