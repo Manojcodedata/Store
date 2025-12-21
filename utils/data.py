@@ -1,7 +1,7 @@
 def db():
     import pandas as pd
 
-    df = pd.read_excel("Material Master.xlsx")
+    df = pd.read_excel("materials.xlsx")
 
     items = list(df['Item'].values)
 
