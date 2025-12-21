@@ -3,7 +3,8 @@ def connection():
     import streamlit as st
     from google.oauth2.service_account import Credentials
 
-    credential = st.secrets["service_account"]
+    #credential = st.secrets["service_account"]
+    credential = credentials.json
 
     scopes = [
     'https://www.googleapis.com/auth/spreadsheets', # Access Sheets data
