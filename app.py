@@ -1,31 +1,53 @@
-from connect import *
 import streamlit as st
-from data import *
+import base64
+from pages.purchase import purchase_page
+from pages.indents import indents_page
+from pages.payment import payments_page
+from pages.bill import bills_entry_page
 
-departments, items= db()
-client = connection()
+def add_bg_from_local(image_file):
+    with open(image_file, "rb") as img_file:
+        encoded = base64.b64encode(img_file.read()).decode()
 
-# select the sheet
+    st.markdown(
+        f"""
+        <style>
+        .stApp {{
+            background-image: url("data:image/png;base64,{encoded}");
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }}
+        </style>
+        """,
+        unsafe_allow_html=True
+    )
 
-sheet_name = st.text_input("Select the sheet name")
+st.set_page_config(page_title="Store & Vendor Management", layout="wide")
 
-#Date sheet
-target_date = st.text_input("Enter the sheet date")
+add_bg_from_local("assets/background.png")
 
-vocherid = st.text_input("Enter the vocher number")
-department = st.selectbox("Select the department",departments)
-item = st.selectbox("Select the item",items)
-indent_qty = st.text_input("Enter the Quantity")
+st.sidebar.title("🏪 Management Panel")
 
-if st.button("Save"):
-    sheet = client.open(sheet_name)
-    target_sheet = sheet.worksheet(target_date)
-    new = [vocherid,department,item,indent_qty]
-    # Update a cell
-    target_sheet.append_row(new)
-    st.write("Updated")
+menu = st.sidebar.radio(
+    "Select Module",
+    [
+        "Vendor Bills",
+        "Vendor Payments",
+        "Store Purchases",
+        "Store Indents"
+    ]
+)
 
-# Append a new row
-#sheet.append_row(["Sai", "Manoj", "Data Scientist", "India"])
 
-#print("Data updated successfully ✅")
+if menu == "Vendor Bills":
+    bills_entry_page()
+
+elif menu == "Vendor Payments":
+    payments_page()
+
+elif menu == "Store Purchases":
+    purchase_page()
+
+elif menu == "Store Indents":
+    indents_page()
