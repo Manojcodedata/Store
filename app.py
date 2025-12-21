@@ -4,8 +4,6 @@ from pages.indents import indents_page
 from pages.payment import payments_page
 from pages.bill import bills_entry_page
 
-st.set_page_config(page_title="Store & Vendor Management", layout="wide")
-
 st.sidebar.title("🏪 Management Panel")
 
 menu = st.sidebar.radio(
