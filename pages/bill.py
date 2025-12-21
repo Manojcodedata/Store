@@ -10,7 +10,7 @@ def bills_entry_page():
         date = st.date_input("Bill Date")
         vendor = st.selectbox("Vendor Name",['NTree','Pakka Fresh','Aradhya Gas','Ram Dev','Kwality Icecream','Baba Milk house','Junnu','Lemons','Farm Agro','Sarvana Milk','30 KL swathi water','Kanchi PVT LTD','Mehabood Pan','Arife','Dmart','Nirmala Pickle','Kaveri Rice','AV Enterprice','Hyperpure','Venkateshwara Coconuts Ramu','Manikanta Traders','Others','Tea Time','Rajamouli valet cards'])
         bill_no = st.text_input("Bill Number")
-        item = st.selectbox("Item Purchased",item)
+        item = st.selectbox("Item Purchased",items)
         amount = st.number_input("Bill Amount", min_value=0.0)
 
         submit = st.form_submit_button("Save Bill")
