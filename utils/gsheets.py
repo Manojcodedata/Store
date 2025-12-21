@@ -9,7 +9,7 @@ def get_worksheet(spreadsheet_name, worksheet_name):
     ]
 
     creds = Credentials.from_service_account_file(
-        "credebtials.json",
+        "credentials.json",
         scopes=scopes
     )
 
