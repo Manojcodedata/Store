@@ -27,6 +27,6 @@ def indents_page():
             department,
             quantity
         ])
-        sheet.write("Data",str(date),indent_no,item,department,quantity)
+        st.write("Data",str(date),indent_no,item,department,quantity)
 
         st.success(f"✅Item of Qty in saved in Store sheet → Indent")
