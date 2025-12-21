@@ -1,8 +1,12 @@
-def db():
-    import pandas as pd
+import pandas as pd
+import os
 
-    df = pd.read_excel("materials.xlsx")
+def db():
+    base_dir = os.path.dirname(os.path.dirname(__file__))
+
+    file_path = os.path.join(base_dir, "materials.xlsx")
+
+    df = pd.read_excel(file_path)
 
     items = list(df['Item'].values)
-
     return items
