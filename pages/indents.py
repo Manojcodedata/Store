@@ -8,9 +8,9 @@ def indents_page():
 
     with st.form("indent_form"):
         date = st.date_input("Indent Date")
-        indent_no = st.number_input("Indent Number")
-        item = st.selectbox("Item Name",items)
+        indent_no = int(st.number_input("Indent Number"))
         department = st.selectbox("Department", ["Main_Kitchen","Juice","Grinding","Live_Kitchen","First_Floor","Coffee","House_Keeping","Counter_parcel","Cash_Counter","Cutting","Tea_Time","Others"])
+        item = st.selectbox("Item Name",items)
         quantity = st.number_input("Quantity")
         
 
