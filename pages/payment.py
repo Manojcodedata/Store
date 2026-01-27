@@ -6,7 +6,7 @@ def payments_page():
 
     with st.form("payment_form"):
         date = st.date_input("Payment Date")
-        vendor = st.selectbox("Vendor Name",['Nirmala Traders','Maintainance_Repair','Pakka Fresh','Aradhya Gas','Ram Dev','Kwality Icecream','Baba Milk house','Junnu','DSY Water','coconut water','MD Jahangeer Lemons','Konaseema coconuts','Farm Agro','Sarvana Milk','30 KL swathi water','Kanchi PVT LTD','Mehabood Pan','Arife','Dmart','Nirmala Pickle','Kaveri Rice Mills','AV Enterprice','Hyperpure','Venkateshwara Coconuts Ramu','Manikanta Traders Gajaraj rice','Coconut Water','AV Enterprises Tea Time','Giridhar Enterprices valet cards','Manasa Dairy','Online order','Venkateshwara charcoal','Market Fruits_vegetables','Local Purchase','SS_fitness(cold pressed Juice)','Bal Reddy(sadguru veg)'])
+        vendor = st.selectbox("Vendor Name",['Nirmala Traders','Maintainance_Repair','Pakka Fresh','Aradhya Gas','Ram Dev','Kwality Icecream','Baba Milk house','Junnu','DSY Water','coconut water','MD Jahangeer Lemons','Konaseema coconuts','Farm Agro','Sarvana Milk','30 KL swathi water','Kanchi PVT LTD','Mehabood Pan','Arife','Dmart','Nirmala Pickle','Kaveri Rice Mills','AV Enterprice','Hyperpure','Venkateshwara Coconuts Ramu','Manikanta Traders Gajaraj rice','Coconut Water','AV Enterprises Tea Time','Rajamouli (Priting material)','Manasa Dairy','Online order','Venkateshwara charcoal','Market Fruits_vegetables','Local Purchase','SS_fitness(cold pressed Juice)','Bal Reddy(sadguru veg)'])
         mode = st.selectbox("Payment Mode", ["Cash", "UPI", "Bank Transfer"])
         amount = st.number_input("Amount Paid", min_value=0.0)
 
