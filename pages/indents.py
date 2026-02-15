@@ -6,25 +6,43 @@ def indents_page():
     items= db()
     st.title("📦 Store Indent / Dispatch")
 
-    with st.form("indent_form"):
-        date = st.date_input("Indent Date")
-        indent_no = int(st.number_input("Indent Number"))
-        department = st.selectbox("Department", ["Main_Kitchen","Juice","Grinding","Live_Kitchen","First_Floor","Coffee","House_Keeping","Counter_parcel","Cash_Counter","Cutting","Tea_Time","Others"])
-        if department == 'Grinding':
-            item = st.selectbox('Grinding_Item',['Masala Dosa','Chitti Pesarattu','Idly','Rice Flour','Kal Dosa','Paper Dosa','Rava Mixing','Green Chutney','Red Chutney','Temple Pulihora','Dosa Garlic Paste','Sambar Masala','Elaneer Payasam','Peanut chutney','Idly Podi'])
-            quantity = st.number_input("Quantity of item")
-              
-        else:
+    option = st.radio('Choose form',['General','Grinding stock'])
+
+    if option == 'General':
+
+        with st.form("indent_form"):
+            date = st.date_input("Indent Date")
+            indent_no = int(st.number_input("Indent Number"))
+            department = st.selectbox("Department", ["Main_Kitchen","Juice","Grinding","Live_Kitchen","First_Floor","Coffee","House_Keeping","Counter_parcel","Cash_Counter","Cutting","Tea_Time","Others"])
             item = st.selectbox("Item Name",items)
             quantity = st.number_input("Quantity")
-        
+            
 
-        submit = st.form_submit_button("Save Indent")
+            submit = st.form_submit_button("Save Indent")
 
-    if submit:
-        sheet = get_worksheet("Store Sheet", "Indents")
+        if submit:
+            sheet = get_worksheet("Store Sheet", "Indents")
+            sheet.append_row([
+                str(date),
+                indent_no,
+                item,
+                department,
+                quantity
+            ])
+            st.success(f"✅Item of Qty in saved in Store sheet → Indent")
 
-        if department == 'Grinding':
+    #Grinding
+    elif option=='Grinding stock':
+
+        with st.form("indent_form"):
+            date = st.date_input("Indent Date")
+            indent_no = int(st.number_input("Indent Number"))
+            department = st.selectbox("Department", ["Main_Kitchen","Grinding"])
+            item = st.selectbox('Grinding_Item',['Masala Dosa','Chitti Pesarattu','Idly','Rice Flour','Kal Dosa','Paper Dosa','Rava Mixing','Green Chutney','Red Chutney','Temple Pulihora','Dosa Garlic Paste','Sambar Masala','Elaneer Payasam','Peanut chutney','Idly Podi'])
+            quantity = st.number_input("Quantity of item")
+            submit = st.form_submit_button("Save Indent")
+        if submit:
+            sheet = get_worksheet("Store Sheet", "Indents")
             if item == 'Masala Dosa':
                 if quantity == 8:
                     rows = [[str(date),indent_no,'Dosa Rice',department,8],
@@ -70,14 +88,5 @@ def indents_page():
                             [str(date),indent_no,'Methi',department,0.060]]
                 else:
                     st.write("Please enter correct quantity")
-                sheet.append_rows(
-                rows)
-        else:
-            sheet.append_row([
-                str(date),
-                indent_no,
-                item,
-                department,
-                quantity
-            ])
-        st.success(f"✅Item of Qty in saved in Store sheet → Indent")
+                sheet.append_rows(rows)
+                st.success(f"✅Item of Qty in saved in Store sheet → Indent")
